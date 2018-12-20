@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Лабіринт</title>
+	<style>
+	.container {
+		width: 860px;
+		margin: 0 auto;
+	}
+		#lab p {
+			margin: 0;
+		}
+		#lab p:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#lab span {
+			float: left;
+			width: 32px;
+			height: 32px;
+			background: no-repeat center center;
+			border-right: 1px solid silver;
+			border-bottom: 1px solid silver;
+		}
+		#lab p:first-child span {
+			border-top: 1px solid silver;
+		}
+		#lab span:first-child {
+			border-left: 1px solid silver;
+		}
+		#lab span.wall {
+			background: silver;
+		}
+		#lab span.hero {
+			background-image: url(homer.png);
+		}
+		#lab span.monster {
+			background-image: url(monster.png);
+		}
+		#lab span.gold {
+			background-image: url(beer.png);
+		}
+		.controls {
+			width: 630px;
+			text-align: center;
+			padding-top: 32px;
+		}
+		button {
+			margin-right: 10px;
+			padding: 7px;
+			border: none;
+			background: #ccdd12;
+			color: #000;
+			font-weight: bold;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="lab">
+		
+		</div>
+		<div class="controls">
+			<button id="up">Up</button>
+			<button id="down">Down</button>
+			<button id="left">Left</button>
+			<button id="right">Right</button>
+		</div>
+	</div>
+	<script src="maze.js"></script>
+</body>
+</html>
