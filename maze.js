@@ -74,7 +74,6 @@
 
 function goHero(dir){
 	let heroSpan = Lab.querySelector('.hero');
-	// деструктуризація об'єкта:
 	let {x, y} = getCoordinates(heroSpan);
 
 	let targetSpan;
@@ -107,20 +106,6 @@ function goHero(dir){
 	}
 	heroSpan.classList.remove('hero');
 	targetSpan.classList.add('hero');
-	
-	/* конструкція with:
-	with (targetSpan.classList) {
-		if (contains('wall')) return;
-		let isGold = contains('gold');
-		let isMonstr = contains('monstr')
-		if (isGold || isMonstr) {
-			alert(isGold ? 'You win!!!\nCongratulations!' : 'Потрачено');
-			location.reload();
-			return;
-		}
-		heroSpan.classList.remove('hero');
-		add('hero');
-	}*/
 
 }
 
@@ -141,29 +126,24 @@ function goHero(dir){
 
 	function monsterTime(){
 		let monsterSpan = Lab.querySelector('.monster');
-		// деструктуризація об'єкта:
 		let {x, y} = getCoordinates(monsterSpan);
 		let route = findHero(x, y, []);
-		// route = [[5, 2], {5, 3}, {6, 3}, {7, 3}];
 		let targetSpan = Lab.children[route[0][1]].children[route[0][0]];
+
 		if (targetSpan.classList.contains('hero')){
 			alert('Потрачено');
 			location.reload();
 			return;
 		}
+
 		monsterSpan.classList.remove('monster');
 		targetSpan.classList.add('monster');
 	}
 
 	function findHero(x, y, route){
-
-		// if (Lab.children[y].children[x].classList.contains('hero')){
-		// 	route.unshift([x, y]);
-		// 	return true;
-		// }
 		let arr = arrIn.concat();
 
-		if (y > 0 && canGo(x, y -1, arr) findHero(x, y - 1, arr); // up
+		if (y > 0 && canGo(x, y -1, arr)) findHero(x, y - 1, arr); // up
 		if (y < maxY && canGo(x, y + 1, route)) findHero(x, y + 1, route); // down
 		if (x > 0 && canGo(x - 1, y, route)) findHero(x - 1, y, route); //left
 		if (x < maxX && canGo(x + 1, y, route)) findHero(x + 1, y, route); // right
@@ -178,4 +158,3 @@ function goHero(dir){
 
 	}
 })();
-
